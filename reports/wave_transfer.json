@@ -1,0 +1,60 @@
+{
+  "task": "Frozen within-configuration transfer; no target-wave observations used for fitting",
+  "source": {
+    "experiment": "O4",
+    "wave": 1,
+    "grid_stride": 8,
+    "spatial_points": 1279,
+    "frames": 120,
+    "units": {
+      "xy": "m",
+      "time": "s",
+      "wse": "m"
+    },
+    "target": "WSE relative to initial bed",
+    "source": "https://zenodo.org/records/17777387",
+    "mask_rule": "reference mask nonzero and finite across all selected frames",
+    "excluded_grid_points": 1866
+  },
+  "target": {
+    "experiment": "O4",
+    "wave": 3,
+    "grid_stride": 8,
+    "spatial_points": 1277,
+    "frames": 120,
+    "units": {
+      "xy": "m",
+      "time": "s",
+      "wse": "m"
+    },
+    "target": "WSE relative to initial bed",
+    "source": "https://zenodo.org/records/17777387",
+    "mask_rule": "reference mask nonzero and finite across all selected frames",
+    "excluded_grid_points": 1868
+  },
+  "source_processed_sha256": "f08548a7591549c84d7032967f4babdc70050b1d820bba54ff7920c350d39ecf",
+  "target_processed_sha256": "11c70f2bd006147950818ec26053e560bec58952d2042039e7658e409b98ebde",
+  "evaluated_frames": 117,
+  "excluded_frames_outside_source_time_range": 3,
+  "evaluated_points": 1273,
+  "evaluated_time_range_s": [
+    0.841722,
+    4.771612
+  ],
+  "excluded_target_points_without_source_coordinate_match": 4,
+  "frozen_source_interpolation": {
+    "rmse_mm": 6.798991359512996,
+    "mae_mm": 5.036894959615799,
+    "p95_absolute_error_mm": 13.396133287436548
+  },
+  "frozen_source_mlp": {
+    "rmse_mm": 6.715577818411053,
+    "mae_mm": 4.969323367843803,
+    "p95_absolute_error_mm": 13.334465533948404
+  },
+  "limitations": [
+    "Same laboratory obstacle geometry; not independent geographic events.",
+    "Later wave starts with a changed bed; WSE remains relative to original bed.",
+    "One configuration and one trained seed; no Himalayan validation."
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "task": "within-wave sparse WSE reconstruction with spatial and temporal holdouts",
+  "processed_dataset_sha256": "f08548a7591549c84d7032967f4babdc70050b1d820bba54ff7920c350d39ecf",
+  "dataset": {
+    "experiment": "O4",
+    "wave": 1,
+    "grid_stride": 8,
+    "spatial_points": 1279,
+    "frames": 120,
+    "units": {
+      "xy": "m",
+      "time": "s",
+      "wse": "m"
+    },
+    "target": "WSE relative to initial bed",
+    "source": "https://zenodo.org/records/17777387",
+    "mask_rule": "reference mask nonzero and finite across all selected frames",
+    "excluded_grid_points": 1866
+  },
+  "seed": 42,
+  "sensors": 128,
+  "training_frames": 73,
+  "validation_frames": 24,
+  "test_frames": 23,
+  "heldout_spatial_points": 1151,
+  "epochs": 1500,
+  "selected_epoch": 1500,
+  "training_seconds": 0.760090499999933,
+  "linear_interpolation": {
+    "rmse_mm": 3.442228572698578,
+    "mae_mm": 2.042271716517316,
+    "p95_absolute_error_mm": 6.17421107086665
+  },
+  "supervised_mlp": {
+    "rmse_mm": 4.734657445556514,
+    "mae_mm": 3.2478802457424303,
+    "p95_absolute_error_mm": 9.167745375430128
+  },
+  "spatial_nearest_fallback_points": 80,
+  "history": [
+    {
+      "epoch": 100,
+      "training_mse_normalized": 0.1244114339351654,
+      "validation_rmse_mm": 6.685769960742332
+    },
+    {
+      "epoch": 200,
+      "training_mse_normalized": 0.07146550714969635,
+      "validation_rmse_mm": 5.471748893566261
+    },
+    {
+      "epoch": 300,
+      "training_mse_normalized": 0.06442990899085999,
+      "validation_rmse_mm": 5.310424130661291
+    },
+    {
+      "epoch": 400,
+      "training_mse_normalized": 0.06080014631152153,
+      "validation_rmse_mm": 5.245299376840896
+    },
+    {
+      "epoch": 500,
+      "training_mse_normalized": 0.05622876435518265,
+      "validation_rmse_mm": 5.254613607253995
+    },
+    {
+      "epoch": 600,
+      "training_mse_normalized": 0.05534639582037926,
+      "validation_rmse_mm": 5.172532832422412
+    },
+    {
+      "epoch": 700,
+      "training_mse_normalized": 0.051803939044475555,
+      "validation_rmse_mm": 5.208670735373505
+    },
+    {
+      "epoch": 800,
+      "training_mse_normalized": 0.05683606490492821,
+      "validation_rmse_mm": 5.127321399880746
+    },
+    {
+      "epoch": 900,
+      "training_mse_normalized": 0.05359165370464325,
+      "validation_rmse_mm": 5.090474884434946
+    },
+    {
+      "epoch": 1000,
+      "training_mse_normalized": 0.049505576491355896,
+      "validation_rmse_mm": 5.046742064836899
+    },
+    {
+      "epoch": 1100,
+      "training_mse_normalized": 0.05560240149497986,
+      "validation_rmse_mm": 5.029449982845537
+    },
+    {
+      "epoch": 1200,
+      "training_mse_normalized": 0.05323200300335884,
+      "validation_rmse_mm": 5.032207411494938
+    },
+    {
+      "epoch": 1300,
+      "training_mse_normalized": 0.05235520377755165,
+      "validation_rmse_mm": 4.9795429314295365
+    },
+    {
+      "epoch": 1400,
+      "training_mse_normalized": 0.04938926547765732,
+      "validation_rmse_mm": 4.922504065968568
+    },
+    {
+      "epoch": 1500,
+      "training_mse_normalized": 0.0454336516559124,
+      "validation_rmse_mm": 4.819205567683701
+    }
+  ],
+  "limitations": [
+    "Within-wave interpolation, not future-event prediction or cross-event validation.",
+    "Reference data already include source filtering and smoothing.",
+    "Triangulation can span obstacle cavities; it is a simple baseline.",
+    "Only WSE is evaluated; depth and velocity are not measured targets."
+  ]
+}

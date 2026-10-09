@@ -1,0 +1,23 @@
+{
+  "notebook_sha256": "7909c9f37da9edbbebf83d604ab3651dddd8608df1dfb3a4c32adf2ae08eea0a",
+  "dataset_sha256": {
+    "O4_wave1.npz": "f08548a7591549c84d7032967f4babdc70050b1d820bba54ff7920c350d39ecf",
+    "O4_wave3.npz": "11c70f2bd006147950818ec26053e560bec58952d2042039e7658e409b98ebde"
+  },
+  "sensor_budgets": [
+    16,
+    32,
+    64,
+    128
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "mlp_steps": 1500,
+  "design": "Nested sensors; fixed validation/test locations across budgets within each seed",
+  "holdout_rule": "First max(budgets) permuted locations form candidate pool; all remaining locations held out",
+  "variation": "Seed varies sensor placement and neural initialization; same two laboratory waves",
+  "reference": "Separate paired experiment; its permutation differs from the showcase's random choice"
+}

@@ -1,0 +1,27 @@
+{
+  "O4_wave1.npz": {
+    "source": "data/processed/O4_wave1.npz",
+    "bytes": 1170177,
+    "sha256": "f08548a7591549c84d7032967f4babdc70050b1d820bba54ff7920c350d39ecf"
+  },
+  "O4_wave3.npz": {
+    "source": "data/processed/O4_wave3.npz",
+    "bytes": 1167094,
+    "sha256": "11c70f2bd006147950818ec26053e560bec58952d2042039e7658e409b98ebde"
+  },
+  "measured_predictions.npz": {
+    "source": "outputs/measured/O4_wave1/predictions.npz",
+    "bytes": 540287,
+    "sha256": "5201c51b09058463eaef667fccecaa4dd96f8eb0b0b5b3a1e2e79e78f5919837"
+  },
+  "synthetic_predictions.npz": {
+    "source": "outputs/synthetic/predictions.npz",
+    "bytes": 29774,
+    "sha256": "fba4c7c48909a4c0079d6ec154475dc60858ac3faafb65588eb117d15cc552cd"
+  },
+  "synthetic_reference.npz": {
+    "source": "outputs/synthetic/reference.npz",
+    "bytes": 66589,
+    "sha256": "f5dbf193815eb06b8bb46adb9b22578996afcc77f1f6de76029ccc41fe60e8ac"
+  }
+}

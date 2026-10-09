@@ -1,0 +1,19 @@
+Physics-Informed Learning for Flood Reconstruction
+Copyright 2026 Dol Raj Bashyal
+
+Project code and documentation: Apache License 2.0 (see LICENSE).
+Kaggle notebook:
+https://www.kaggle.com/code/bashcode223/physics-informed-flood-reconstruction-ml-vs-pinn
+
+Third-party experimental observations and derived measured-data plots remain
+licensed under CC BY 4.0 and are not relicensed by the project's software license.
+
+Dataset: Experimental characterization of bed evolution and water surface
+elevation by consecutive dambreaks using Kinect device.
+Creators: Jose Segovia-Burillo, Sergio Martinez-Aranda, Mario Morales-Hernandez,
+Javier Fernandez-Pato, and Pilar Garcia-Navarro.
+Source: https://zenodo.org/records/17777387
+License: https://creativecommons.org/licenses/by/4.0/
+Changes: millimeter-to-meter conversion, masking, finite-data exclusion, spatial
+subsampling, simulated sparse observation availability, and derived evaluation
+metrics and figures. See docs/data_sources.md for complete provenance.

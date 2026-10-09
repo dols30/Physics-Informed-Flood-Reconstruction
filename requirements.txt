@@ -1,0 +1,2 @@
+# Complete notebook workflow. For the minimal CLI, use requirements-lock.txt.
+-r requirements-notebook-lock.txt

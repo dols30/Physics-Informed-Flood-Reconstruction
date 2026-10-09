@@ -1,0 +1,35 @@
+{
+  "python": "3.13.3",
+  "platform": "Darwin",
+  "architecture": "arm64",
+  "verification": "New virtual environment; ZIP-extracted project; no raw data or local checkpoints; full notebook executed",
+  "notebook_sha256": "7909c9f37da9edbbebf83d604ab3651dddd8608df1dfb3a4c32adf2ae08eea0a",
+  "attachment_identical": true,
+  "executed_code_cells": 27,
+  "execution_errors": 0,
+  "figures": 10,
+  "fresh_metrics_match_original": true,
+  "sensor_ablation_runs": 12,
+  "paired_split_files_verified": true,
+  "notebook_lock_sha256": "0db3a086002d13c67a53ccd77568c40c5f50c34b4a4d162432402c4644535da9",
+  "versions": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "torch": "2.14.1",
+    "scikit-learn": "1.9.1",
+    "nbclient": "0.11.0"
+  },
+  "scientific_tests_passed": 12,
+  "final_zip_extracted_tests_passed": 12,
+  "clean_environment_ablation_smoke_passed": true,
+  "sensor_result_notebook_executed": true,
+  "github_actions_status": "Configured; not yet executed on GitHub",
+  "kaggle_publication": {
+    "url": "https://www.kaggle.com/code/bashcode223/physics-informed-flood-reconstruction-ml-vs-pinn",
+    "version": 1,
+    "reviewed_code_cells": 27,
+    "code_matches_local_ast": true,
+    "license": "Apache-2.0"
+  }
+}
