@@ -1,5 +1,7 @@
 # Physics-Informed Learning for Flood Reconstruction
 
+[![Scientific checks](https://github.com/dols30/Physics-Informed-Flood-Reconstruction/actions/workflows/checks.yml/badge.svg)](https://github.com/dols30/Physics-Informed-Flood-Reconstruction/actions/workflows/checks.yml)
+
 **[View on Kaggle](https://www.kaggle.com/code/bashcode223/physics-informed-flood-reconstruction-ml-vs-pinn)** · [Main notebook](notebooks/flood_reconstruction_model_comparison.ipynb) · [Sensor-budget study](notebooks/sensor_ablation.ipynb)
 
 **Author:** Dol Raj Bashyal · [Kaggle: bashcode223](https://www.kaggle.com/bashcode223)

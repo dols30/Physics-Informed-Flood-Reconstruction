@@ -59,7 +59,8 @@ nested sensor budgets, interpolation, numerical mass balance, and differentiable
 physics residuals. The GitHub Actions workflow installs the pinned environment,
 runs the tests, executes the showcase, and runs a short two-budget ablation on macOS.
 The macOS runner label follows the [GitHub-hosted runners reference](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
-The workflow is configured; its hosted execution awaits publication of the repository.
+Current hosted results are available in
+[GitHub Actions](https://github.com/dols30/Physics-Informed-Flood-Reconstruction/actions/workflows/checks.yml).
 
 The sensor study includes three seeds for measured-data models. The synthetic PINN
 result is still a single-seed benchmark; the measured sensor study does not establish
@@ -74,8 +75,9 @@ python scripts/package_project.py
 The ZIP includes code, tests, both notebooks, processed observations, result summaries,
 figures, attribution, and dependency files. It excludes virtual environments, raw
 archives, private Git state, Jupyter scratch documents, and local model checkpoints.
-Create a GitHub repository named `Physics-Informed-Flood-Reconstruction` and upload
-the extracted project contents. Suggested description:
+The complete project is published at
+[dols30/Physics-Informed-Flood-Reconstruction](https://github.com/dols30/Physics-Informed-Flood-Reconstruction).
+Clone that repository or use the ZIP as a standalone copy. Repository description:
 
 > Comparative machine learning and physics-informed neural networks for floodwater
 > reconstruction using laboratory observations and simulated shallow-water dynamics.

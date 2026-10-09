@@ -24,7 +24,9 @@
   "final_zip_extracted_tests_passed": 12,
   "clean_environment_ablation_smoke_passed": true,
   "sensor_result_notebook_executed": true,
-  "github_actions_status": "Configured; not yet executed on GitHub",
+  "github_actions_status": "See the linked workflow for current hosted verification status",
+  "github_repository": "https://github.com/dols30/Physics-Informed-Flood-Reconstruction",
+  "github_actions": "https://github.com/dols30/Physics-Informed-Flood-Reconstruction/actions/workflows/checks.yml",
   "kaggle_publication": {
     "url": "https://www.kaggle.com/code/bashcode223/physics-informed-flood-reconstruction-ml-vs-pinn",
     "version": 1,
