@@ -112,3 +112,20 @@ lines update with native widget colors. Keyboard arrows, focus restoration,
 repeated switches, navigation, same-route refresh, and system changes were checked.
 Verified the controls fit at 320 px without horizontal overflow and inspected
 phone and desktop screenshots. All eight dashboard checks pass.
+
+## Icon toggle and Apple typography
+
+Replaced the three theme labels with one sun/moon button. The button joins the
+native header row beside the main menu instead of using a fixed right offset;
+GitHub and Share actions keep their own layout space. Its accessible label and
+tooltip name the next theme. Enter and Space retain native button behavior.
+
+Use the Apple system font stack for the interface and Plotly figures, with
+tabular metric numerals. San Francisco is provided by Apple devices; no font
+files are redistributed or fetched. Removed the unused Plex font assets.
+
+Checked light/dark switching and focus in the local browser. At 320 px, injected
+GitHub/Share-sized toolbar controls remained separate from the toggle and main
+menu, with no horizontal page overflow. This was a local layout check; the live
+Cloud header was not accessible at the supplied short app name. Eight dashboard
+checks pass.

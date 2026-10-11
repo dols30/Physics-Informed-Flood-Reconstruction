@@ -1,20 +1,24 @@
 // Native menu selectors match the Streamlit version pinned in app/requirements.txt.
-// Forward to native actions so widgets, plots, system mode, and persistence agree.
+// Use native actions so widget colors and browser persistence stay in sync.
 export default function({ parentElement, setStateValue, data }) {
   window.__floodlabThemeCleanup?.();
   const source = parentElement.querySelector('.theme-switcher');
-  const header = document.querySelector('[data-testid="stHeader"]');
-  if (!header) return;
+  const menu = document.querySelector('[data-testid="stMainMenu"]');
+  if (!menu) return;
+
   const host = document.createElement('div');
   host.dataset.floodlabThemeControl = 'true';
   const root = host.attachShadow({mode: 'open'});
-  for (const style of parentElement.querySelectorAll('style')) root.append(style.cloneNode(true));
+  for (const style of parentElement.querySelectorAll('style')) {
+    root.append(style.cloneNode(true));
+  }
   const control = source.cloneNode(true);
   control.style.removeProperty('display');
   root.append(control);
   source.style.display = 'none';
-  header.append(host);
-  const buttons = [...control.querySelectorAll('[data-theme]')];
+  menu.before(host);
+
+  const button = control.querySelector('button');
   const status = control.querySelector('.theme-status');
   const nativeMenu = () => document.querySelector('[data-testid="stMainMenuButton"]');
   const nativeChoice = mode => document.querySelector(`[data-testid="stMainMenuItem-theme-${mode}"]`);
@@ -25,36 +29,35 @@ export default function({ parentElement, setStateValue, data }) {
   let focusTimer;
   let reportedAppearance = data?.appearance;
 
-  function reportAppearance(mode) {
-    const appearance = mode === 'System'
-      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-      : mode.toLowerCase();
-    if (['light', 'dark'].includes(appearance) && appearance !== reportedAppearance) {
+  function reportAppearance(appearance) {
+    if (appearance !== reportedAppearance) {
       reportedAppearance = appearance;
       setStateValue('appearance', appearance);
     }
   }
 
-  function restoreFocus(mode) {
+  function updateIcon(appearance) {
+    control.dataset.appearance = appearance;
+    const label = `Switch to ${appearance === 'dark' ? 'light' : 'dark'} theme`;
+    button.setAttribute('aria-label', label);
+    button.setAttribute('aria-pressed', String(appearance === 'dark'));
+    button.title = label;
+  }
+
+  function restoreFocus() {
     clearTimeout(focusTimer);
     focusTimer = setTimeout(() => {
-      if (!disposed && window.__floodlabThemeFocus === mode) {
-        buttons.find(button => button.dataset.theme === mode)?.focus({preventScroll: true});
+      if (!disposed && window.__floodlabThemeFocus) {
+        button.focus({preventScroll: true});
         delete window.__floodlabThemeFocus;
       }
     }, 100);
   }
 
-  function select(mode) {
-    if (!['System', 'Light', 'Dark'].includes(mode)) return;
-    for (const button of buttons) {
-      const selected = button.dataset.theme === mode;
-      button.setAttribute('aria-checked', String(selected));
-      button.tabIndex = selected ? 0 : -1;
-    }
-  }
-
   function sync() {
+    // Cloud adds GitHub and Share controls. Flow layout leaves each its own space.
+    const menu = document.querySelector('[data-testid="stMainMenu"]');
+    if (menu && host.nextSibling !== menu) menu.before(host);
     const styles = getComputedStyle(source);
     for (const token of ['--st-text-color', '--st-primary-color', '--st-background-color']) {
       const value = styles.getPropertyValue(token);
@@ -64,23 +67,18 @@ export default function({ parentElement, setStateValue, data }) {
     if (/^#[0-9a-f]{6}$/i.test(background)) {
       const rgb = [1, 3, 5].map(index => parseInt(background.slice(index, index + 2), 16));
       const luminance = .2126 * rgb[0] + .7152 * rgb[1] + .0722 * rgb[2];
-      reportAppearance(luminance > 128 ? 'light' : 'dark');
-    }
-    const selected = document.querySelector('[data-testid="stThemeSwitcher"] [aria-checked="true"]');
-    if (selected) select(selected.dataset.testid.split('-').at(-1));
-    else {
-      try { select(JSON.parse(localStorage.getItem(cacheKey)) || 'Dark'); }
-      catch { select('Dark'); }
+      const appearance = luminance > 128 ? 'light' : 'dark';
+      updateIcon(appearance);
+      reportAppearance(appearance);
     }
   }
 
-  function choose(button, {focus = true} = {}) {
+  function choose(mode, {focus = true} = {}) {
     if (busy) return;
     busy = true;
     status.textContent = '';
     document.documentElement.dataset.floodlabThemeBridge = 'true';
-    const mode = button.dataset.theme;
-    if (focus) window.__floodlabThemeFocus = mode;
+    if (focus) window.__floodlabThemeFocus = true;
     if (!nativeChoice(mode)) nativeMenu()?.click();
     const started = performance.now();
 
@@ -88,15 +86,16 @@ export default function({ parentElement, setStateValue, data }) {
       if (disposed) return;
       const target = nativeChoice(mode);
       if (target) {
-        reportAppearance(mode);
+        reportAppearance(mode.toLowerCase());
         target.click();
-        select(mode);
+        updateIcon(mode.toLowerCase());
         if (document.querySelector('[data-testid="stMainMenuList"]')) nativeMenu()?.click();
         delete document.documentElement.dataset.floodlabThemeBridge;
         busy = false;
-        if (focus) restoreFocus(mode);
-      } else if (performance.now() - started < 1500) timer = setTimeout(apply, 25);
-      else {
+        if (focus) restoreFocus();
+      } else if (performance.now() - started < 1500) {
+        timer = setTimeout(apply, 25);
+      } else {
         delete document.documentElement.dataset.floodlabThemeBridge;
         busy = false;
         status.textContent = 'Choose Theme in the menu.';
@@ -105,31 +104,19 @@ export default function({ parentElement, setStateValue, data }) {
     apply();
   }
 
-  for (const [index, button] of buttons.entries()) {
-    button.onclick = () => choose(button);
-    button.onkeydown = event => {
-      let next;
-      if (['ArrowRight', 'ArrowDown'].includes(event.key)) next = (index + 1) % buttons.length;
-      if (['ArrowLeft', 'ArrowUp'].includes(event.key)) next = (index + buttons.length - 1) % buttons.length;
-      if (event.key === 'Home') next = 0;
-      if (event.key === 'End') next = buttons.length - 1;
-      if (next !== undefined) { event.preventDefault(); choose(buttons[next]); }
-    };
-  }
+  button.onclick = () => choose(control.dataset.appearance === 'dark' ? 'Light' : 'Dark');
   sync();
-  const focusMode = window.__floodlabThemeFocus;
-  if (focusMode) restoreFocus(focusMode);
+  if (window.__floodlabThemeFocus) restoreFocus();
   const observer = new MutationObserver(() => { if (!busy) sync(); });
-  observer.observe(document.body, {childList: true, subtree: true, attributes: true, attributeFilter: ['aria-checked', 'style']});
+  observer.observe(document.body, {
+    childList: true, subtree: true, attributes: true, attributeFilter: ['style']
+  });
   const systemAppearance = matchMedia('(prefers-color-scheme: dark)');
-  const systemChanged = () => {
-    if (buttons[0].getAttribute('aria-checked') === 'true') {
-      requestAnimationFrame(() => { if (!disposed) sync(); });
-    }
-  };
+  const systemChanged = () => requestAnimationFrame(() => { if (!disposed) sync(); });
   systemAppearance.addEventListener('change', systemChanged);
+
   const cleanup = () => {
-    if (root.activeElement?.dataset.theme) window.__floodlabThemeFocus = root.activeElement.dataset.theme;
+    if (root.activeElement === button) window.__floodlabThemeFocus = true;
     disposed = true;
     clearTimeout(timer);
     clearTimeout(focusTimer);
@@ -140,20 +127,15 @@ export default function({ parentElement, setStateValue, data }) {
     if (window.__floodlabThemeCleanup === cleanup) delete window.__floodlabThemeCleanup;
   };
   window.__floodlabThemeCleanup = cleanup;
-  // Both native palettes are configured, so explicitly select the initial dark
-  // appearance instead of Streamlit's automatic system preference. Respect a
-  // visitor's saved choice and avoid moving keyboard focus on first load.
+
+  // Streamlit may save System before mounting; apply our dark default only once.
   const defaultAppliedKey = 'floodlab-dark-default-v1';
   if (!localStorage.getItem(defaultAppliedKey)) {
-    // Native initialization can save "System" before this component mounts.
-    // Apply our default once, keeping explicit saved Light/Dark choices.
     let saved;
     try { saved = JSON.parse(localStorage.getItem(cacheKey)); }
     catch { saved = null; }
     localStorage.setItem(defaultAppliedKey, 'true');
-    if (!['Light', 'Dark'].includes(saved)) {
-      choose(buttons.find(button => button.dataset.theme === 'Dark'), {focus: false});
-    }
+    if (!['Light', 'Dark'].includes(saved)) choose('Dark', {focus: false});
   }
   return cleanup;
 }

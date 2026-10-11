@@ -17,10 +17,12 @@ python -m streamlit run app/streamlit_app.py
 
 The app opens at `http://localhost:8501`. The tested environment is Python 3.13 on an
 Apple M4 Mac. Streamlit and Plotly versions are pinned in `app/requirements.txt`.
-The top-right **System / Light / Dark** control changes the full native theme.
-Dark is the default for new visitors. System follows the browser's system
-appearance; explicit choices use Streamlit's
-per-browser persistence. IBM Plex fonts are hosted with the app.
+The top-right sun/moon icon toggles the full native light or dark theme.
+Dark is the default for new visitors; choices use Streamlit's per-browser persistence.
+The icon sits beside the main menu in the toolbar flow, leaving room for Community
+Cloud's GitHub and Share controls. Its tooltip and accessible label describe the
+next appearance. Typography uses Apple's system font stack: San Francisco on Apple
+devices, with native system and sans-serif fallbacks elsewhere.
 Detailed protocols and data attribution are expandable below the visualizations.
 Controls, charts, and details share an open layout with consistent alignment;
 subtle dividers replace enclosing cards. Export actions remain available as
@@ -31,7 +33,7 @@ The centered workspace is capped at 1,568 CSS pixels on large monitors. Controls
 and charts reflow according to the available main-column width, including space
 occupied by the sidebar. Narrow screens stack plots and controls while retaining
 two-column metric groups. Typography uses a 16 px body, 14 px labels and notes,
-13–15 px chart text, and 24–28 px monospaced metrics. Font sizes remain bounded on
+13–15 px chart text, and 24–28 px metrics with tabular numerals. Font sizes remain bounded on
 ultrawide displays; browser zoom remains available for individual reading needs.
 
 ## Views

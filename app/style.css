@@ -11,11 +11,11 @@
 [data-testid="stSidebarContent"] { padding-inline: 0; }
 [data-testid="stSidebarUserContent"] { padding: 1.7rem 1.25rem 1rem; }
 [data-testid="stVerticalBlock"] { gap: .8rem; }
-h1, h2, h3 { font-family: 'IBM Plex Sans', sans-serif !important; }
+h1, h2, h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif !important; }
 h1 { font-size: 2rem !important; line-height: 1.2 !important; font-weight: 600 !important; letter-spacing: -.025em; }
 h2 { font-size: 1.25rem !important; line-height: 1.35 !important; font-weight: 600 !important; letter-spacing: -.015em; }
 h3 { font-size: 1.125rem !important; line-height: 1.4 !important; font-weight: 600 !important; letter-spacing: -.01em; }
-.brand { font: 600 1.45rem/1.2 'IBM Plex Sans', sans-serif; letter-spacing: -.05em; margin-bottom: .35rem; }
+.brand { font: 600 1.45rem/1.2 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; letter-spacing: -.05em; margin-bottom: .35rem; }
 .brand span { font-weight: 400; opacity: .7; }
 .sidebar-caption { font-size: .875rem; opacity: .8; margin-bottom: 1.6rem; line-height: 1.5; }
 .sidebar-label { font-size: .875rem; font-weight: 500; opacity: .8; margin: .7rem .7rem; }
@@ -28,13 +28,13 @@ h3 { font-size: 1.125rem !important; line-height: 1.4 !important; font-weight: 6
 .page-heading p { margin: 0; font-size: 1rem; line-height: 1.5; opacity: .8; max-width: 65ch; }
 .dataset-tag { font-size: .875rem; line-height: 1.5; white-space: nowrap; padding-top: .4rem; opacity: .8; }
 .st-key-controls { padding: .8rem 0 1rem; border-bottom: 1px solid color-mix(in srgb, currentColor 16%, transparent); }
-.st-key-controls [data-testid="stCaptionContainer"] { font: .875rem/1.5 'IBM Plex Sans', sans-serif; font-variant-numeric: tabular-nums; }
+.st-key-controls [data-testid="stCaptionContainer"] { font: .875rem/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; font-variant-numeric: tabular-nums; }
 .st-key-stats { padding: .55rem 0 .25rem; }
 [data-testid="stMetric"] { padding: .3rem 0 .4rem; }
 [data-testid="stWidgetLabel"] p, [data-testid="stMetricLabel"] p { font-size: .875rem; line-height: 1.5; }
 [data-testid="stMetricLabel"] { opacity: .85; height: auto; }
 [data-testid="stMetricLabel"] p { white-space: normal; }
-[data-testid="stMetricValue"] { font: 500 1.75rem/1.3 'IBM Plex Mono', monospace; letter-spacing: -.035em; }
+[data-testid="stMetricValue"] { font: 500 1.75rem/1.3 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
 [data-testid="stMetricValue"] p { font: inherit; }
 [data-testid="stCaptionContainer"] p { font-size: .875rem; line-height: 1.5; }
 [data-testid="stMain"] [data-testid="stExpander"] [data-testid="stMarkdownContainer"] p { max-width: 75ch; line-height: 1.6; }

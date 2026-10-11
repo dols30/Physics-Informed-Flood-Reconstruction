@@ -23,7 +23,11 @@ def style(fig, height=335):
         height=height,
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
-        font=dict(family="IBM Plex Sans, sans-serif", size=13, color="#243746"),
+        font=dict(
+            family='-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif',
+            size=13,
+            color="#243746",
+        ),
         margin=dict(l=45, r=25, t=60, b=45),
         legend=dict(orientation="h", y=1.03, yanchor="bottom", x=0, font=dict(size=13)),
         hovermode="closest",

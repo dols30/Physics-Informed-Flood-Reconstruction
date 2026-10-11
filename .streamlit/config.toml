@@ -1,37 +1,12 @@
 [theme]
 base = "dark"
-font = "'IBM Plex Sans', sans-serif"
-headingFont = "'IBM Plex Sans', sans-serif"
-codeFont = "'IBM Plex Mono', monospace"
+font = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
+headingFont = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
+codeFont = "ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace"
 baseFontSize = 16
 baseRadius = "6px"
 buttonRadius = "6px"
 showWidgetBorder = true
-
-[[theme.fontFaces]]
-family = "IBM Plex Sans"
-url = "app/static/fonts/plex-sans-400.ttf"
-weight = 400
-[[theme.fontFaces]]
-family = "IBM Plex Sans"
-url = "app/static/fonts/plex-sans-500.ttf"
-weight = 500
-[[theme.fontFaces]]
-family = "IBM Plex Sans"
-url = "app/static/fonts/plex-sans-600.ttf"
-weight = 600
-[[theme.fontFaces]]
-family = "IBM Plex Sans"
-url = "app/static/fonts/plex-sans-700.ttf"
-weight = 700
-[[theme.fontFaces]]
-family = "IBM Plex Mono"
-url = "app/static/fonts/plex-mono-400.ttf"
-weight = 400
-[[theme.fontFaces]]
-family = "IBM Plex Mono"
-url = "app/static/fonts/plex-mono-500.ttf"
-weight = 500
 
 [theme.light]
 primaryColor = "#176B62"
