@@ -133,7 +133,9 @@ def download_frame(wave, name, frame, number):
 def explorer():
     heading(
         "Flood Explorer",
-        "Measured water surfaces and model reconstructions.",
+        "This dashboard explores how machine learning reconstructs missing floodwater "
+        "measurements from limited sensors. Select an experiment, choose a model, and "
+        "explore how predicted water levels compare with real laboratory observations.",
         "Zaragoza laboratory data",
     )
     with st.container(key="controls"):
@@ -141,21 +143,34 @@ def explorer():
         wave_note(number)
     ref, pred = wave["reference_m"][frame], wave[MODELS[name]][frame]
     result = scores(ref, pred)
+    whole_wave_rmse = scores(wave["reference_m"], wave[MODELS[name]])["RMSE (mm)"]
     with st.container(key="stats"):
         cols = st.columns(4)
-        for col, (label, value) in zip(
+        for col, (label, value, explanation) in zip(
             cols,
             [
-                ("Frame RMSE", f"{result['RMSE (mm)']:.2f} mm"),
-                ("Frame MAE", f"{result['MAE (mm)']:.2f} mm"),
+                (
+                    "Frame RMSE",
+                    f"{result['RMSE (mm)']:.2f} mm",
+                    "Prediction error that penalizes larger mistakes more strongly. "
+                    "Measured in millimeters; lower is better.",
+                ),
+                (
+                    "Frame MAE",
+                    f"{result['MAE (mm)']:.2f} mm",
+                    "Average absolute difference between predicted and measured levels. "
+                    "Measured in millimeters; lower is better.",
+                ),
                 (
                     "Whole-wave RMSE",
-                    f"{scores(wave['reference_m'],wave[MODELS[name]])['RMSE (mm)']:.2f} mm",
+                    f"{whole_wave_rmse:.2f} mm",
+                    "Prediction error across all evaluated frames, rather than just the "
+                    "currently selected frame. Measured in millimeters; lower is better.",
                 ),
-                ("Observation time", f"{wave['time_s'][frame]:.3f} s"),
+                ("Observation time", f"{wave['time_s'][frame]:.3f} s", None),
             ],
         ):
-            col.metric(label, value)
+            col.metric(label, value, help=explanation)
     limits = elevation_limits(wave)
     with st.container(key="plot-panel"):
         toolbar, options = st.columns([1, 1])
@@ -172,32 +187,45 @@ def explorer():
                 "Training sensors", value=False, disabled=number == 3 or view != "Elevation maps"
             )
         if view == "Elevation maps":
-            left, right = responsive_columns(2, key="paired-maps")
+            left, middle, right = responsive_columns(3, key="field-row")
             with left:
                 plot(
                     charts.field_map(wave["xy_m"], ref * 1000, "Measured", limits),
                     "Measured WSE at held-out locations",
                 )
-            with right:
+            with middle:
                 plot(
                     charts.field_map(
                         wave["xy_m"],
                         pred * 1000,
-                        name,
+                        f"Predicted · {name}",
                         limits,
                         sensors=wave["sensor_xy_m"] if show and number == 1 else None,
                     ),
                     "Saved model reconstruction",
                 )
+            with right:
+                error_mm = np.abs(pred - ref) * 1000
+                # Use one error scale across this model's frames, so time comparisons are fair.
+                whole_wave_error = np.abs(wave[MODELS[name]] - wave["reference_m"]) * 1000
+                error_limits = (0, max(float(whole_wave_error.max()), 1))
+                plot(
+                    charts.field_map(
+                        wave["xy_m"], error_mm, "Absolute error", error_limits, error=True
+                    ),
+                    "Absolute difference between predicted and measured WSE, in millimeters",
+                )
+            st.html(
+                '<div class="plot-note">Water-surface elevation (mm), relative to initial bed. '
+                "Measured and predicted maps share a color scale; absolute error has its own "
+                "scale. Blank cells are unobserved.</div>"
+            )
         else:
             plot(
                 charts.elevation_3d(wave["xy_m"], pred * 1000, name, limits),
                 "Rotatable reconstructed WSE surface",
             )
             st.caption("Exaggerated vertical scale · horizontal axes: m · elevation: mm")
-        st.html(
-            '<div class="plot-note">Water-surface elevation (mm), relative to initial bed. Shared color scale; blank cells are unobserved.</div>'
-        )
     with st.expander("Wave animation"):
         animate = st.checkbox("Load animation", key="animate_wave")
         if animate:

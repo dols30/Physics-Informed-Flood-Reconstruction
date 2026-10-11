@@ -20,6 +20,10 @@ h3 { font-size: 1.125rem !important; line-height: 1.4 !important; font-weight: 6
 .sidebar-caption { font-size: .875rem; opacity: .8; margin-bottom: 1.6rem; line-height: 1.5; }
 .sidebar-label { font-size: .875rem; font-weight: 500; opacity: .8; margin: .7rem .7rem; }
 .sidebar-credit { font-size: .875rem; opacity: .8; margin: 2rem .7rem 0; line-height: 1.6; }
+.st-key-project-links a { display: inline-block; padding-block: .2rem; font-size: .875rem; font-weight: 600; text-underline-offset: 3px; }
+[data-testid="stSidebar"] [data-testid="stExpander"] details { border: 0; background: transparent; }
+[data-testid="stSidebar"] [data-testid="stExpander"] summary { padding: .65rem 0; font-size: .875rem; }
+[data-testid="stSidebar"] [data-testid="stExpanderDetails"] { padding: .2rem 0 .5rem; font-size: .875rem; line-height: 1.5; }
 [data-testid="stPageLink-NavLink"] { padding: .75rem .8rem; border-radius: 6px; font-weight: 500; }
 [data-testid="stPageLink-NavLink"][aria-current="page"] { border-left: 3px solid currentColor; }
 [data-testid="stPageLink-NavLink"]:hover { background: color-mix(in srgb, currentColor 7%, transparent); }

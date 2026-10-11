@@ -129,3 +129,16 @@ GitHub/Share-sized toolbar controls remained separate from the toggle and main
 menu, with no horizontal page overflow. This was a local layout check; the live
 Cloud header was not accessible at the supplied short app name. Eight dashboard
 checks pass.
+
+## Visitor context and reconstruction error
+
+Added the visitor introduction below Flood Explorer, three metric help tooltips,
+and a third map showing absolute prediction error in millimeters. Measured and
+predicted maps share their elevation scale; error uses a separate scale fixed
+across the selected model's frames. Maps stack on narrow screens. Sidebar links
+have a clear Project links label, with a short About This Research disclosure.
+
+Verified the error map against displayed measurements and predictions at 1,151
+locations: its mean is 2.47591657 mm, matching the displayed 2.48 mm MAE. Checked
+the RMSE tooltip, desktop three-map layout, phone stacking, and no horizontal
+overflow. The eight existing dashboard checks pass across all models and waves.

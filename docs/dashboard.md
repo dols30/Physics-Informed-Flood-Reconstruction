@@ -39,7 +39,9 @@ ultrawide displays; browser zoom remains available for individual reading needs.
 ## Views
 
 - **Flood Explorer:** choose a measured wave, one of four reconstruction models,
-  and an observation frame. Compare measured and reconstructed WSE, rotate the 3D
+  and an observation frame. A short introduction explains the task, and metric
+  help icons explain RMSE, MAE, and whole-wave error. Compare measured WSE,
+  predicted WSE, and absolute error in three maps, or rotate the 3D
   surface, play an optional animation, and download the displayed frame as CSV.
 - **Model Comparison:** whole-wave scores, measured/predicted/absolute-error maps,
   and frame RMSE over time. Wave 1 uses held-out times and spatial locations.
@@ -48,6 +50,10 @@ ultrawide displays; browser zoom remains available for individual reading needs.
   runs for seeds 42/43/44. Select wave 1 test or wave 3 transfer evaluation.
 - **PINN Explorer:** depth and discharge profiles, signed conservation residuals,
   equations, objective, and metrics for the separate synthetic experiment.
+
+The sidebar groups Source code and Kaggle notebook under Project links, with a
+short About This Research disclosure covering the Nepal motivation and the
+laboratory/simulation data used here.
 
 Measured maps show WSE relative to the initial bed in millimeters. Blank grid cells
 remain blank: the app does not invent measurements or interpolate a ground-truth

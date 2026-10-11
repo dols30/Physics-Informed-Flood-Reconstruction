@@ -36,10 +36,20 @@ with st.sidebar:
     for destination in pages:
         st.page_link(destination)
     st.divider()
-    st.markdown("[Source code ↗](https://github.com/dols30/Physics-Informed-Flood-Reconstruction)")
-    st.markdown(
-        "[Kaggle notebook ↗](https://www.kaggle.com/code/bashcode223/physics-informed-flood-reconstruction-ml-vs-pinn)"
-    )
+    with st.container(key="project-links"):
+        st.html('<div class="sidebar-label">Project links</div>')
+        st.markdown(
+            "[Source code ↗](https://github.com/dols30/Physics-Informed-Flood-Reconstruction)"
+        )
+        st.markdown(
+            "[Kaggle notebook ↗](https://www.kaggle.com/code/bashcode223/physics-informed-flood-reconstruction-ml-vs-pinn)"
+        )
+    with st.expander("About This Research"):
+        st.markdown(
+            "I’m from Nepal; Himalayan glacial lake outburst floods inspired this project. "
+            "It compares reconstruction on Zaragoza laboratory data and physics-informed "
+            "learning on a separate simulation."
+        )
     st.html('<div class="sidebar-credit">Dol Raj Bashyal<br>Research project</div>')
 
 try:
