@@ -1,0 +1,82 @@
+/* Native Streamlit controls, organized as a scientific workspace. */
+.stMainBlockContainer {
+  max-width: 1568px;
+  margin-inline: auto;
+  padding: 4rem clamp(1rem, 2.4vw, 2.5rem) 1.75rem;
+  container: workspace / inline-size;
+}
+[data-testid="stAppDeployButton"] { display: none; }
+[data-floodlab-theme-bridge="true"] [data-testid="stMainMenuList"] { visibility: hidden; }
+[data-testid="stSidebar"] { width: 236px !important; min-width: 236px !important; }
+[data-testid="stSidebarContent"] { padding-inline: 0; }
+[data-testid="stSidebarUserContent"] { padding: 1.7rem 1.25rem 1rem; }
+[data-testid="stVerticalBlock"] { gap: .8rem; }
+h1, h2, h3 { font-family: 'IBM Plex Sans', sans-serif !important; }
+h1 { font-size: 2rem !important; line-height: 1.2 !important; font-weight: 600 !important; letter-spacing: -.025em; }
+h2 { font-size: 1.25rem !important; line-height: 1.35 !important; font-weight: 600 !important; letter-spacing: -.015em; }
+h3 { font-size: 1.125rem !important; line-height: 1.4 !important; font-weight: 600 !important; letter-spacing: -.01em; }
+.brand { font: 600 1.45rem/1.2 'IBM Plex Sans', sans-serif; letter-spacing: -.05em; margin-bottom: .35rem; }
+.brand span { font-weight: 400; opacity: .7; }
+.sidebar-caption { font-size: .875rem; opacity: .8; margin-bottom: 1.6rem; line-height: 1.5; }
+.sidebar-label { font-size: .875rem; font-weight: 500; opacity: .8; margin: .7rem .7rem; }
+.sidebar-credit { font-size: .875rem; opacity: .8; margin: 2rem .7rem 0; line-height: 1.6; }
+[data-testid="stPageLink-NavLink"] { padding: .75rem .8rem; border-radius: 6px; font-weight: 500; }
+[data-testid="stPageLink-NavLink"][aria-current="page"] { border-left: 3px solid currentColor; }
+[data-testid="stPageLink-NavLink"]:hover { background: color-mix(in srgb, currentColor 7%, transparent); }
+.page-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: .6rem; }
+.page-heading h1 { margin: 0 0 .4rem; padding: 0 !important; }
+.page-heading p { margin: 0; font-size: 1rem; line-height: 1.5; opacity: .8; max-width: 65ch; }
+.dataset-tag { font-size: .875rem; line-height: 1.5; white-space: nowrap; padding-top: .4rem; opacity: .8; }
+.st-key-controls { padding: .8rem 0 1rem; border-bottom: 1px solid color-mix(in srgb, currentColor 16%, transparent); }
+.st-key-controls [data-testid="stCaptionContainer"] { font: .875rem/1.5 'IBM Plex Sans', sans-serif; font-variant-numeric: tabular-nums; }
+.st-key-stats { padding: .55rem 0 .25rem; }
+[data-testid="stMetric"] { padding: .3rem 0 .4rem; }
+[data-testid="stWidgetLabel"] p, [data-testid="stMetricLabel"] p { font-size: .875rem; line-height: 1.5; }
+[data-testid="stMetricLabel"] { opacity: .85; height: auto; }
+[data-testid="stMetricLabel"] p { white-space: normal; }
+[data-testid="stMetricValue"] { font: 500 1.75rem/1.3 'IBM Plex Mono', monospace; letter-spacing: -.035em; }
+[data-testid="stMetricValue"] p { font: inherit; }
+[data-testid="stCaptionContainer"] p { font-size: .875rem; line-height: 1.5; }
+[data-testid="stMain"] [data-testid="stExpander"] [data-testid="stMarkdownContainer"] p { max-width: 75ch; line-height: 1.6; }
+.st-key-plot-panel { padding: .65rem 0 0; }
+.st-key-plot-panel [data-testid="stCheckbox"] label { font-size: .875rem; }
+.plot-note { margin: -.25rem 0 .65rem; font-size: .875rem; line-height: 1.5; opacity: .8; }
+.js-plotly-plot .main-svg text { fill: currentColor; }
+.js-plotly-plot .gridlayer path { stroke: color-mix(in srgb, currentColor 12%, transparent); }
+.st-key-footer { margin-top: .9rem; padding-top: .3rem; border-top: 1px solid color-mix(in srgb, currentColor 16%, transparent); }
+[data-testid="stMain"] [data-testid="stExpander"] details { border: 0; border-radius: 0; background: transparent; }
+[data-testid="stMain"] [data-testid="stExpander"] summary { padding: .65rem 0; font-size: .875rem; }
+[data-testid="stMain"] [data-testid="stExpanderDetails"] { padding: .4rem 0 .8rem; }
+[data-testid="stMain"] [data-testid="stExpander"] summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+button { transition: background-color 120ms ease, border-color 120ms ease; }
+button:focus-visible, a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+/* Respond to usable main-column width, including the open navigation rail. */
+@container workspace (max-width: 1140px) {
+  .st-key-field-row [data-testid="stHorizontalBlock"] { flex-direction: column; }
+  .st-key-field-row [data-testid="stColumn"] { width: 100% !important; flex: 1 1 auto !important; min-width: 0; }
+}
+@container workspace (max-width: 900px) {
+  [class*="st-key-paired-"] [data-testid="stHorizontalBlock"] { flex-direction: column; }
+  [class*="st-key-paired-"] [data-testid="stColumn"] { width: 100% !important; flex: 1 1 auto !important; min-width: 0; }
+  .st-key-controls [data-testid="stHorizontalBlock"] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .st-key-controls [data-testid="stColumn"] { width: auto !important; min-width: 0; }
+  .st-key-controls [data-testid="stColumn"]:last-child:nth-child(3) { grid-column: 1 / -1; }
+  .st-key-stats [data-testid="stHorizontalBlock"] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .st-key-stats [data-testid="stColumn"] { width: auto !important; min-width: 0; }
+  .page-heading { flex-wrap: wrap; }
+}
+@container workspace (max-width: 540px) {
+  .st-key-controls [data-testid="stHorizontalBlock"] { grid-template-columns: minmax(0, 1fr); }
+  .st-key-stats [data-testid="stColumn"]:last-child:nth-child(3) { grid-column: 1 / -1; }
+}
+@media (max-width: 767px) {
+  .stMainBlockContainer { padding: 4rem 1rem 1.25rem; }
+  .page-heading { flex-direction: column; gap: .6rem; }
+  .page-heading h1 { font-size: 1.75rem !important; }
+  .st-key-controls { padding: .6rem 0 .9rem; }
+  .st-key-plot-panel { padding: .6rem 0 0; }
+  [data-testid="stMetricValue"] { font-size: 1.5rem; }
+  [data-testid="stMain"] [data-testid="stHorizontalBlock"] { flex-direction: column; }
+  [data-testid="stMain"] [data-testid="stColumn"] { width: 100% !important; flex: 1 1 auto !important; }
+}
+@media (prefers-reduced-motion: reduce) { button { transition: none; } }

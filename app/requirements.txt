@@ -1,0 +1,5 @@
+# Dashboard only: training and PyTorch are not needed at serving time.
+streamlit==1.65.0
+plotly==7.1.0
+numpy>=2.2,<3
+pandas>=2.2,<4

@@ -82,6 +82,23 @@ See the [experiment notebook](notebooks/sensor_ablation.ipynb),
 
 ## Run locally
 
+### FloodLab AI dashboard
+
+Explore the results in an interactive Streamlit app: measured flood reconstruction,
+model comparison, the three-seed sensor study, and the separate synthetic PINN experiment.
+The app serves verified showcase predictions and needs no model training or GPU.
+
+```bash
+python -m pip install -r app/requirements.txt
+python -m streamlit run app/streamlit_app.py
+```
+
+See [dashboard setup and deployment](docs/dashboard.md). Its lightweight dependencies
+are separate from the notebook environment below. Measured WSE is shown in millimeters;
+the synthetic physics quantities are dimensionless.
+
+### Notebook and experiment workflow
+
 The complete workflow was verified in a fresh **Python 3.13.3 / macOS arm64** environment
 from an isolated ZIP copy, using only the included processed measurements. All 27
 showcase code cells ran successfully, and the fresh metrics matched the original run.
@@ -135,6 +152,8 @@ in the lock file. Models and result files are saved under `outputs/kaggle_notebo
 | --- | --- |
 | `notebooks/flood_reconstruction_model_comparison.ipynb` | Original executed showcase and model training |
 | `notebooks/sensor_ablation.ipynb` | Paired experiment results and comparison plots |
+| `app/` | FloodLab AI dashboard, lightweight dependencies, and interaction checks |
+| `reports/dashboard/` | Verified showcase predictions and signed physics diagnostics |
 | `src/floods/` | Data preparation, numerical physics, experiment adapters, and CLI |
 | `reports/notebook_results/` | CSV metrics reproduced in the clean environment |
 | `reports/sensor_ablation/` | Twelve-run results, mean/std summaries, plot, and fingerprints |
@@ -143,6 +162,7 @@ in the lock file. Models and result files are saved under `outputs/kaggle_notebo
 | `.github/workflows/checks.yml` | Automated tests, notebook execution, and ablation smoke run |
 | `docs/` | Provenance, reproducibility, experiment protocol, and research directions |
 | `scripts/package_project.py` | Shareable ZIP with local environments/checkpoints excluded |
+| `scripts/export_dashboard.py` | Export saved showcase checkpoints and verify published scores |
 
 ## Scope and next research steps
 

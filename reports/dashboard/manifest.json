@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "run_config": {
+    "seed": 42,
+    "data_source": "processed",
+    "sensors": 128,
+    "mlp_steps": 1500,
+    "pinn_steps": 1500,
+    "physics_weight": 0.01,
+    "selected_measured_model": "Interpolation",
+    "measured_target": "WSE relative to initial bed (m)",
+    "synthetic_data": "Numerical wet-bed release; dimensionless; no Nepal observations",
+    "evaluation": "Within-wave spatial/time holdouts and frozen same-geometry wave transfer"
+  },
+  "inputs": {
+    "outputs/kaggle_notebook/mlp.pt": "f77febc2ff66710dca1c24d0080d12d9e5f8452bcc31c93ecffbd74c8f0660c0",
+    "outputs/kaggle_notebook/random_forest.joblib": "67b9ee1d37b415a1c02ae3531395ebce001dc40bba7d30a74063b52257f83798",
+    "outputs/kaggle_notebook/polynomial_ridge.joblib": "1285873a72871846390d9f6240ea3e12b833de92b47074fa081c517caadeb01b",
+    "outputs/kaggle_notebook/pinn.pt": "31864844b6c39ba87ad7da65a7cb8efcff51de43527b46afb317f0709c233a56",
+    "outputs/kaggle_notebook/data-only_nn.pt": "2765725eb6fa42ca3b4a397c685b40aca58cf95aa5aeb54b04a5a3dcfed5f773",
+    "outputs/kaggle_notebook/split.npz": "6062de1355fad40f937a3dfc5ab3c4203c53c1c9f500add1ac19e690f50b4978",
+    "outputs/kaggle_notebook/run_config.json": "0739b68b99b07e591a01d2f1e688a0ba7231f3b0193e3e821c54fcdb3f16b60e"
+  },
+  "files": {
+    "synthetic.npz": {
+      "sha256": "0124a0791856192bc5b947f4cda8d37bb9ac5aa7392c397771453cfe226a81eb",
+      "bytes": 53542
+    },
+    "wave1.npz": {
+      "sha256": "858b5321e9cc1dd55a72a97479b18a70b4e8a6ecde88bfecabde39ab4db11f74",
+      "bytes": 848074
+    },
+    "wave3.npz": {
+      "sha256": "3f1a62fed0afb427f67153f1b82a19641272479fc79f9433b3f666eca86a0a34",
+      "bytes": 4611554
+    }
+  },
+  "measured_source": "https://zenodo.org/records/17777387",
+  "measured_license": "CC BY 4.0",
+  "notebook_sha256": "7909c9f37da9edbbebf83d604ab3651dddd8608df1dfb3a4c32adf2ae08eea0a",
+  "score_verification": "All measured and synthetic metrics match reports/notebook_results",
+  "synthetic_reference_diagnostics": {
+    "cells": 128,
+    "frames": 41,
+    "steps": 158,
+    "cfl": 0.4,
+    "min_height": 0.1,
+    "mass_balance_error": -1.7740258047294066e-17
+  }
+}

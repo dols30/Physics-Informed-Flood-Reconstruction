@@ -1,0 +1,32 @@
+.theme-switcher {
+  position: fixed;
+  top: 14px;
+  right: 3.75rem;
+  z-index: 1000000;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--st-text-color);
+  font: 400 14px/1.5 'IBM Plex Sans', sans-serif;
+}
+.theme-label { margin-right: 8px; opacity: .8; }
+.theme-switcher button {
+  padding: 4px 10px;
+  min-height: 32px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.theme-switcher button:hover { background: color-mix(in srgb, var(--st-text-color) 8%, transparent); }
+.theme-switcher button[aria-checked="true"] {
+  color: var(--st-primary-color);
+  background: color-mix(in srgb, var(--st-primary-color) 12%, var(--st-background-color));
+  font-weight: 500;
+}
+.theme-switcher button:focus-visible { outline: 2px solid var(--st-primary-color); outline-offset: 2px; }
+.theme-status { position: absolute; top: 38px; right: 0; background: var(--st-background-color); white-space: nowrap; }
+@media (max-width: 540px) { .theme-label { display: none; } }

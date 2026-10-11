@@ -17,3 +17,7 @@ License: https://creativecommons.org/licenses/by/4.0/
 Changes: millimeter-to-meter conversion, masking, finite-data exclusion, spatial
 subsampling, simulated sparse observation availability, and derived evaluation
 metrics and figures. See docs/data_sources.md for complete provenance.
+
+Dashboard typography: IBM Plex Sans and IBM Plex Mono, Copyright 2017 IBM Corp.
+Distributed under the SIL Open Font License 1.1. Font files were obtained through
+Google Fonts; license texts are included in app/static/fonts/.

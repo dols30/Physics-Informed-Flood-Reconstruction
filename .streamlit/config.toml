@@ -1,0 +1,69 @@
+[theme]
+base = "dark"
+font = "'IBM Plex Sans', sans-serif"
+headingFont = "'IBM Plex Sans', sans-serif"
+codeFont = "'IBM Plex Mono', monospace"
+baseFontSize = 16
+baseRadius = "6px"
+buttonRadius = "6px"
+showWidgetBorder = true
+
+[[theme.fontFaces]]
+family = "IBM Plex Sans"
+url = "app/static/fonts/plex-sans-400.ttf"
+weight = 400
+[[theme.fontFaces]]
+family = "IBM Plex Sans"
+url = "app/static/fonts/plex-sans-500.ttf"
+weight = 500
+[[theme.fontFaces]]
+family = "IBM Plex Sans"
+url = "app/static/fonts/plex-sans-600.ttf"
+weight = 600
+[[theme.fontFaces]]
+family = "IBM Plex Sans"
+url = "app/static/fonts/plex-sans-700.ttf"
+weight = 700
+[[theme.fontFaces]]
+family = "IBM Plex Mono"
+url = "app/static/fonts/plex-mono-400.ttf"
+weight = 400
+[[theme.fontFaces]]
+family = "IBM Plex Mono"
+url = "app/static/fonts/plex-mono-500.ttf"
+weight = 500
+
+[theme.light]
+primaryColor = "#176B62"
+linkColor = "#176B62"
+backgroundColor = "#F8FAFC"
+secondaryBackgroundColor = "#F0F4F6"
+textColor = "#243746"
+borderColor = "#DAE2E7"
+dataframeHeaderBackgroundColor = "#F0F4F6"
+
+[theme.light.sidebar]
+backgroundColor = "#F0F4F6"
+secondaryBackgroundColor = "#E4EDED"
+textColor = "#243746"
+
+[theme.dark]
+primaryColor = "#71C7BB"
+linkColor = "#71C7BB"
+backgroundColor = "#141D27"
+secondaryBackgroundColor = "#1C2934"
+textColor = "#DAE6EC"
+borderColor = "#34444F"
+dataframeHeaderBackgroundColor = "#1C2934"
+
+[theme.dark.sidebar]
+backgroundColor = "#18232D"
+secondaryBackgroundColor = "#253A43"
+textColor = "#DAE6EC"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+headless = true
+enableStaticServing = true
